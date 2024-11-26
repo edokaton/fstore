@@ -12,23 +12,25 @@ export class ProductService {
 
   constructor(private http: HttpClient) {}
 
-  fetchProducts(): Observable<Product[]> {
-    return this.http
-      .get<Product[]>(BASE_URL + '/products')
-      .pipe(
-        catchError((errorRes) => {
-          return throwError(() => new Error(errorRes));
-        })
-      );
-  }
-
-  /* fetchTopRatedMovieList(
-    params: MovieRequestParams
-  ): Observable<MoviesResponse> {
-    return this.http
-      .get<MoviesResponse>(BASE_URL + 'movie/top_rated', {
-        params: params,
+  fetchCategories(): Observable<string[]> {
+    return this.http.get<string[]>(BASE_URL + '/products/categories').pipe(
+      catchError((errorRes) => {
+        return throwError(() => new Error(errorRes));
       })
+    );
+  }
+
+  fetchProducts(): Observable<Product[]> {
+    return this.http.get<Product[]>(BASE_URL + '/products').pipe(
+      catchError((errorRes) => {
+        return throwError(() => new Error(errorRes));
+      })
+    );
+  }
+
+  fetchFromCategory(category: string): Observable<Product[]> {
+    return this.http
+      .get<Product[]>(BASE_URL + `/products/category/${category}`)
       .pipe(
         catchError((errorRes) => {
           return throwError(() => new Error(errorRes));
@@ -36,7 +38,7 @@ export class ProductService {
       );
   }
 
-  fetchNowPlayingMovieList(
+  /* fetchNowPlayingMovieList(
     params: MovieRequestParams
   ): Observable<MovieWithDatesResponse> {
     return this.http

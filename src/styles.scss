@@ -1,1 +1,136 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  /** warning **/
+  --warning-color: #ffb838;
+  /** danger **/
+  --danger-color: #ef2d54;
+  /** dark **/
+  --dark-color: #191926;
+  /** light **/
+  --light-color: #f1f5f7;
+  /* desktop screen size */
+  --desktop: 1248px;
+  /* tablet screen size */
+  --tablet: 960px;
+
+  .max-width {
+    width: 100%;
+  }
+
+  .max-height {
+    height: 100vh;
+  }
+
+  .flex-col {
+    flex-direction: column;
+  }
+
+  .flex-row {
+    flex-direction: row;
+  }
+
+  .flex-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .container {
+    max-width: 100%;
+  }
+
+  .mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .text-xs {
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: -0.03em;
+  }
+
+  .text-sm {
+    font-size: 16px;
+    line-height: 28px;
+    letter-spacing: -0.03em;
+  }
+
+  .text-ls {
+    font-size: 18px;
+    line-height: 28px;
+    letter-spacing: -0.03em;
+  }
+
+  .text-xl {
+    font-size: 24px;
+    line-height: 36px;
+    letter-spacing: -0.03em;
+  }
+
+  .text-2xl {
+    font-size: 36px;
+    line-height: 48px;
+    letter-spacing: -0.032em;
+  }
+
+  .font-bold {
+    font-weight: bold;
+  }
+
+  .font-semibold {
+    font-weight: 600;
+  }
+
+  .skeleton {
+    &.poster {
+      border-top-left-radius: 24px;
+      border-top-right-radius: 24px;
+      width: 185px;
+      height: 278px;
+      background-color: #dddddd;
+    }
+
+    &.backdrop {
+      border-radius: 30px;
+      width: 100%;
+      height: 720px;
+      background-color: #dddddd;
+    }
+
+    &.text {
+      border-radius: 8px;
+      height: 24px;
+      background-color: #dddddd;
+      margin-bottom: 16px;
+
+      &.small {
+        width: 33.33%;
+      }
+
+      &.medium {
+        width: 66.66%;
+      }
+
+      &.large {
+        width: 100%;
+      }
+    }
+  }
+
+  @media (min-width: 960px) {
+    .container {
+      max-width: 960px;
+    }
+  }
+  @media (min-width: 1248px) {
+    .container {
+      max-width: 1248px;
+    }
+  }
+}

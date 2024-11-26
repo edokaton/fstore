@@ -1,1 +1,51 @@
-<p>cart works!</p>
+<div class="cart-page">
+  <div class="container mx-auto">
+    <p class="section-title font-clash text-xl font-semibold">Cart</p>
+    <div class="cart-vertical-container">
+      <ng-container *ngIf="!isLoading; else loadingState">
+        <ng-container *ngIf="cart.length > 0; else emptyState">
+          <ng-container *ngFor="let product of cart">
+            <p-card class="product-card">
+              <ng-template pTemplate="header">
+                <img class="cart-image" alt="Card" [src]="product.image" />
+              </ng-template>
+
+              <h3>
+                <p-card-header ngClass="cart-title">{{
+                  product.title
+                }}</p-card-header>
+              </h3>
+
+              <p-card-subheader ngClass="cart">{{
+                product.category
+              }}</p-card-subheader>
+
+              <h4>${{ product.price }}</h4>
+
+              <p class="cart-description">
+                {{ product.description }}
+              </p>
+
+              <ng-template pTemplate="footer">
+                <div class="flex gap-3 mt-1">
+                  <p-button
+                    label="Remove from Cart"
+                    (onClick)="onRemoveFromCart(product)"
+                  />
+                </div>
+              </ng-template>
+            </p-card>
+          </ng-container>
+        </ng-container>
+      </ng-container>
+
+      <ng-template #emptyState>
+        <p>Cart's empty</p>
+      </ng-template>
+
+      <ng-template #loadingState>
+        <p-progressSpinner ariaLabel="loading" />
+      </ng-template>
+    </div>
+  </div>
+</div>

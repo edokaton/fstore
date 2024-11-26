@@ -1,17 +1,62 @@
-<div class="favorite-page">
+<div class="products-page">
+  <div class="container mx-auto">
+    <ng-container *ngIf="categories.length > 0">
+      <p class="section-title font-clash text-xl font-semibold">Categories</p>
+      <ng-container *ngFor="let category of categories">
+        <p-button
+          class="category-item"
+          [label]="category"
+          (onClick)="triggerLoadProductsFromCategory(category)"
+        />
+      </ng-container>
+    </ng-container>
+  </div>
   <div class="container mx-auto">
     <p class="section-title font-clash text-xl font-semibold">Products</p>
-    <div class="movies-vertical-container">
-      <ng-container *ngIf="products.length > 0; else emptyState">
-        <ng-container *ngFor="let product of products">
-          <div>{{ product.title }}</div>
-          <div>{{ product.description }}</div>
-          <br /><br />
+    <div class="product-vertical-container">
+      <ng-container *ngIf="!isLoading; else loadingState">
+        <ng-container *ngIf="products.length > 0; else emptyState">
+          <ng-container *ngFor="let product of products">
+            <p-card class="product-card">
+              <ng-template pTemplate="header">
+                <img class="product-image" alt="Card" [src]="product.image" />
+              </ng-template>
+
+              <h3>
+                <p-card-header ngClass="product-title">{{
+                  product.title
+                }}</p-card-header>
+              </h3>
+
+              <p-card-subheader ngClass="product">{{
+                product.category
+              }}</p-card-subheader>
+
+              <h4>${{ product.price }}</h4>
+
+              <p class="product-description">
+                {{ product.description }}
+              </p>
+
+              <ng-template pTemplate="footer">
+                <div class="flex gap-3 mt-1">
+                  <p-button
+                    label="Add to cart"
+                    (onClick)="onAddToCart(product)"
+                  />
+                </div>
+              </ng-template>
+            </p-card>
+          </ng-container>
         </ng-container>
       </ng-container>
 
       <ng-template #emptyState>
-        <p>Produk Kosong</p>
+        <p>Product's Empty</p>
+      </ng-template>
+
+      <ng-template #loadingState>
+        <p-progressSpinner ariaLabel="loading" />
       </ng-template>
     </div>
   </div>

@@ -1,3 +1,23 @@
-<h1>Login Page</h1>
+<div class="flex-center max-height">
+  <p-card header="Login Form">
+    <p-floatLabel>
+      <input pInputText id="username" [(ngModel)]="username" class="max-width" />
+      <label for="username">Username</label>
+    </p-floatLabel>
 
-<button class="button" (click)="navigateToProduct()">Products Page</button>
+    <br /><br />
+
+    <p-floatLabel class="container">
+      <p-password
+        [(ngModel)]="password"
+        [feedback]="false"
+        [toggleMask]="true"
+      />
+      <label for="password">Password</label>
+    </p-floatLabel>
+
+    <br />
+
+    <p-button class="container" label="Login" (click)="login()" class="max-width" [disabled]="isLoading" />
+  </p-card>
+</div>
