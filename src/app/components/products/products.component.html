@@ -1,0 +1,18 @@
+<div class="favorite-page">
+  <div class="container mx-auto">
+    <p class="section-title font-clash text-xl font-semibold">Products</p>
+    <div class="movies-vertical-container">
+      <ng-container *ngIf="products.length > 0; else emptyState">
+        <ng-container *ngFor="let product of products">
+          <div>{{ product.title }}</div>
+          <div>{{ product.description }}</div>
+          <br /><br />
+        </ng-container>
+      </ng-container>
+
+      <ng-template #emptyState>
+        <p>Produk Kosong</p>
+      </ng-template>
+    </div>
+  </div>
+</div>
